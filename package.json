@@ -1,0 +1,35 @@
+{
+  "name": "rollcall",
+  "version": "1.0.0",
+  "description": "Client application for the Ark project.",
+  "main": "src/electron-starter.js",
+  "homepage": "https://github.com/dly5891/RollCall#readme",
+  "dependencies": {
+    "create-react-app": "^1.4.1",
+    "foreman": "^2.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "electron": "^1.7.9",
+    "react-scripts": "^1.0.14"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "dev" : "nf start -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dly5891/RollCall.git"
+  },
+  "author": "David Ly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dly5891/RollCall/issues"
+  }
+}
