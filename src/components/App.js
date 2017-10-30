@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+import Chip from 'material-ui/Chip';
 import AppBar from 'material-ui/AppBar';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
+import Avatar from 'material-ui/Avatar';
+import KennelCard from './KennelCard';
 
 var style = {'float':'right'};
 
+const styles = {
+  chip: {
+    margin: 4,
+    width: '96%'
+  },
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+};
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +28,21 @@ class App extends Component {
 
   handleToggle = () => this.setState({ open: !this.state.open });
 
+  handleClose = () => this.setState({open: false});
+  
+  // TODO: along with the skeleton we have, we need to add some functionality so that
+  //       selecting a specific Cat would pull up that cat's information. For now we have dummy info but that should be functional
+  //       for easier integration.
+  // TODO: Break up components even further. This is too complex.
   render() {
 
     //Hard coded values to showcase multiple animals
     var list = [];
     for (var i = 0; i < 20; i++) {
-      list.push(<MenuItem>Cat {i}</MenuItem>);
+      list.push(
+        <Chip style={styles.chip} onClick={this.handleClose}>
+          <Avatar src='/assets/curly.jpg'/>Cat {i}
+        </Chip>);
     }
 
     return (
@@ -42,27 +61,7 @@ class App extends Component {
             {list}
           </Drawer>
 
-          <Card>
-            <CardHeader
-              title="Cookie"
-            />
-            <CardMedia
-              overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-            >
-            <img src="images/nature-600-337.jpg" alt="Test" />
-            </CardMedia>
-            <CardTitle title="Card title" subtitle="Card subtitle" />
-            <CardText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-              Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-              Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-            </CardText>
-            <CardActions>
-              <RaisedButton label="Action1" style={style}/>
-              <RaisedButton label="Action2" style={style}/>
-            </CardActions>
-          </Card>
+          <KennelCard/>
 
         </MuiThemeProvider>
       </div>
