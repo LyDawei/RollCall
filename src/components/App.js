@@ -6,7 +6,6 @@ import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
 import KennelCard from './KennelCard';
 
-var style = {'float':'right'};
 
 const styles = {
   chip: {
