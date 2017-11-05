@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 
 var animalBio = {
   display: 'table-cell',
-  'vertical-align': 'text-top'
+  verticalAlign: 'text-top'
 };
 
 export default class AnimalBio extends Component {
   render() {
     return (
       <aside style={animalBio}>
-        <h3 style={{'text-align': 'center'}}>About Me</h3>
+        <h3 style={{textAlign: 'center'}}>About Me</h3>
         <li>Joined Us: 05/31/2017</li>
         <li>Gender: Male</li>
         <li>Breed: DSH</li>

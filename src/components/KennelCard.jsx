@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Card, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import AnimalBio from './AnimalBio';
+import CheckOutButton from './CheckOutButton';
 
 var cardStyle = {
   width: '100%',
   float: 'left',
-  'background-color': '#f6f7f9'
+  backgroundColor: '#f6f7f9'
   // margin: '1% 1% 1% 1%'
 };
 
@@ -16,18 +17,25 @@ var cardMediaStyle = {
 };
 
 var pictureWrapper = {
-  'background-color': '#fff',
+  backgroundColor: '#fff',
   margin: '10px',
-  'margin-right': '20px',
-  border: '4px solid #fff',
-  'border-style': 'solid',
-  'border-radius': '2px',
+  marginRight: '20px',
+  border: '10px solid #fff',
+  borderStyle: 'solid',
+  borderRadius: '2px',
   width: '300px',
+  boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+  
 };
 
 var bioContainer = {
   display: 'table'
 };
+
+var cardTitle = {
+  textAlign: 'center',
+  fontFamily: 'cursive'
+}
 
 class KennelCard extends Component {
   render() {
@@ -36,16 +44,15 @@ class KennelCard extends Component {
         <Card style={cardStyle}>
           <div style={bioContainer}>
             <div style={{display: 'table'}}>
-            
               <div style={pictureWrapper}>
                 <CardMedia style={cardMediaStyle}>
                   <img src="/assets/curly.jpg" alt="Description of cat" />
                 </CardMedia>
+                <CardTitle style={cardTitle} title="Curly" />
               </div>
               <AnimalBio/>
             </div>
           </div>
-          <CardTitle title="Curly" />
           <CardText>
             The animal's short story should go here!
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -53,6 +60,7 @@ class KennelCard extends Component {
               Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
               Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
           </CardText>
+          <CheckOutButton/>
         </Card>
       </div>
     );
