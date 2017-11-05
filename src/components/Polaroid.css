@@ -1,0 +1,21 @@
+.polaroid-title {
+    text-align: center;
+    font-family: cursive;
+}
+
+.polaroid-wrapper {
+    background-color: #fff;
+    margin: 10px;
+    margin-right: 20px;
+    border: 10px solid #fff;
+    border-style: solid;
+    border-radius: 2px;
+    width: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.polaroid-image {
+    width: 100%;
+    height: auto;
+    display: table-cell;
+}

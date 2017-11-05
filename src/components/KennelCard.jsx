@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Card, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import AnimalBio from './AnimalBio';
+import AnimalInfo from './AnimalInfo';
 import CheckOutButton from './CheckOutButton';
+import Polaroid from './Polaroid';
 
 var cardStyle = {
   width: '100%',
@@ -10,32 +11,9 @@ var cardStyle = {
   // margin: '1% 1% 1% 1%'
 };
 
-var cardMediaStyle = {
-  width: '100%',
-  height: 'auto',
-  display: 'table-cell'
-};
-
-var pictureWrapper = {
-  backgroundColor: '#fff',
-  margin: '10px',
-  marginRight: '20px',
-  border: '10px solid #fff',
-  borderStyle: 'solid',
-  borderRadius: '2px',
-  width: '300px',
-  boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
-  
-};
-
 var bioContainer = {
   display: 'table'
 };
-
-var cardTitle = {
-  textAlign: 'center',
-  fontFamily: 'cursive'
-}
 
 class KennelCard extends Component {
   render() {
@@ -44,13 +22,8 @@ class KennelCard extends Component {
         <Card style={cardStyle}>
           <div style={bioContainer}>
             <div style={{display: 'table'}}>
-              <div style={pictureWrapper}>
-                <CardMedia style={cardMediaStyle}>
-                  <img src="/assets/curly.jpg" alt="Description of cat" />
-                </CardMedia>
-                <CardTitle style={cardTitle} title="Curly" />
-              </div>
-              <AnimalBio/>
+              <Polaroid />
+              <AnimalInfo/>
             </div>
           </div>
           <CardText>

@@ -6,7 +6,7 @@ var animalBio = {
   verticalAlign: 'text-top'
 };
 
-export default class AnimalBio extends Component {
+export default class AnimalInfo extends Component {
   render() {
     return (
       <aside style={animalBio}>
