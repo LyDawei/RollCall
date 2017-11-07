@@ -1,0 +1,13 @@
+.animal-bio{
+    vertical-align: text-top;
+}
+
+.animal-bio li{
+    list-style: none;
+}
+
+.column-right{
+    width:30%;
+    float:right;
+    margin-bottom:10px;
+}

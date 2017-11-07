@@ -1,0 +1,10 @@
+.column-middle {
+    width:34%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.story-wrapper{
+    height: 227px;
+    overflow-y: scroll;
+}

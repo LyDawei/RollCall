@@ -8,6 +8,7 @@
     "create-react-app": "^1.4.1",
     "foreman": "^2.0.0",
     "material-ui": "^0.19.4",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-fontawesome": "^1.6.1"
