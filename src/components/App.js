@@ -5,7 +5,7 @@ import Chip from 'material-ui/Chip';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
 import KennelCard from './KennelCard';
-
+import './App.css';
 
 const styles = {
   chip: {
@@ -45,7 +45,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div className="app">
         <MuiThemeProvider>
           <AppBar
             title="Roll Call"
