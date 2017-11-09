@@ -7,4 +7,5 @@
 .story-wrapper{
     height: 227px;
     overflow-y: scroll;
+    text-align: text-top;
 }
