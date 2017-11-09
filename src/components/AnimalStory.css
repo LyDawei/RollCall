@@ -1,7 +1,9 @@
 .column-middle {
-    width:34%;
+    width:33%;
     display: inline-block;
     margin-bottom: 10px;
+    height:240px;
+    margin-top:10px;
 }
 
 .story-wrapper{
