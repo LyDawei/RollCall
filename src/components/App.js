@@ -48,7 +48,7 @@ class App extends Component {
       <div className="app">
         <MuiThemeProvider>
           <AppBar
-            title="Roll Call"
+            title="Adult Cat Room"
             onLeftIconButtonTouchTap={this.handleToggle}>
           </AppBar>
 

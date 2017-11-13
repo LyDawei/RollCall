@@ -5,7 +5,7 @@ import './AnimalInfo.css';
 export default class AnimalInfo extends Component {
   render() {
     return (
-      <div class="animal-bio column-right">
+      <div className="animal-bio column-right">
         <CardText>
           <h3 style={{textAlign: 'center'}}>About Me</h3>
           <li>Joined Us: 05/31/2017</li>

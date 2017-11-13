@@ -13,7 +13,7 @@ let mainWindow;
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 480 });
+  mainWindow = new BrowserWindow({ width: 800, height: 480, frame: false });
 
   // and load the index.html of the app.
   const startUrl = process.env.ELECTRON_START_URL || url.format({
@@ -31,7 +31,7 @@ function createWindow() {
     mainWindow = null
   });
 
-  // mainWindow.setMenu(null);
+  mainWindow.setMenu(null);
 }
 
 // This method will be called when Electron has finished
