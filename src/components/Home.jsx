@@ -40,6 +40,7 @@ class Home extends Component {
     var list = [];
     for (var i = 0; i < 20; i++) {
       list.push(
+
         <Chip style={styles.chip} onClick={this.handleClose}>
           <Avatar src='/assets/curly.jpg' />Cat {i}
         </Chip>);

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+//import animalControl from './animal-control';
 
 export default combineReducers({
-  routing: routerReducer
+  //animalControl
 });
