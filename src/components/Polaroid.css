@@ -4,6 +4,7 @@
 }
 
 .polaroid-wrapper {
+    height: 328px;
     background-color: #fff;
     margin: 10px;
     border: 10px solid #fff;
@@ -17,7 +18,7 @@
     height: auto;
 }
 
-.column-left{
-    width:30%;
-    float:left;
+.column-left {
+    width: 30%;
+    float: left;
 }

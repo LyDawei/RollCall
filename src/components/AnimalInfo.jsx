@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardText from 'material-ui/Card/CardText';
+import PropTypes from 'prop-types'
 import './AnimalInfo.css';
 
 export default class AnimalInfo extends Component {
@@ -7,22 +8,75 @@ export default class AnimalInfo extends Component {
     return (
       <div className="animal-bio column-right">
         <CardText>
-          <h3 style={{textAlign: 'center'}}>About Me</h3>
-          <li>Joined Us: 05/31/2017</li>
-          <li>Gender: Male</li>
-          <li>Breed: DSH</li>
-          <li>Birthday: 04/22/2017</li>
-          <li>History: Stray</li>
-          <li>Preferences: something here</li>
-          <li>Cats: Absolutely!</li>
-          <li>Dogs: It's a possibility!</li>
-          <li>Children: It's a possibility!</li>
-          <li>Declawed: No</li>
-          <li>Spayed/Neutered: No</li>
-          <li>Health: Good!</li>
-          <li>Pet ID: 6092</li>
+          <h3 style={{ textAlign: 'center' }}>About Me</h3>
+          <li>
+            <b>Joined Us: </b>
+            {this.props.dateJoined}
+          </li>
+          <li>
+            <b>Gender: </b>
+            {this.props.gender}
+          </li>
+          <li>
+            <b>Breed: </b>
+            {this.props.breed}
+          </li>
+          <li>
+            <b>Birthday: </b>
+            {this.props.birthday}
+          </li>
+          <li>
+            <b>History: </b>
+            {this.props.history}
+          </li>
+          <li>
+            <b>Preferences: </b>
+          </li>
+          <li>
+            <i>Cats: </i>
+            {this.props.cats}
+          </li>
+          <li>
+            <i>Dogs: </i>
+            {this.props.dogs}
+          </li>
+          <li>
+            <i>Children: </i>
+            {this.props.children}
+          </li>
+          <li>
+            <b>Declawed: </b>
+            {this.props.declawed ? 'Yes' : 'No'}
+          </li>
+          <li>
+            <b>Spayed/Neutered: </b>
+            {this.props.spayedOrNeutered ? 'Yes' : 'No'}
+          </li>
+          <li>
+            <b>Health: </b>
+            {this.props.health}
+          </li>
+          <li>
+            <b>Pet ID: </b>
+            {this.props.petId}
+          </li>
         </CardText>
       </div>
     );
   }
 }
+
+AnimalInfo.PropTypes = {
+  dateJoined: PropTypes.string,
+  gender: PropTypes.string,
+  breed: PropTypes.string,
+  birthday: PropTypes.string,
+  history: PropTypes.string,
+  cats: PropTypes.string,
+  dogs: PropTypes.string,
+  children: PropTypes.string,
+  declawed: PropTypes.bool,
+  spayedOrNeutered: PropTypes.bool,
+  health: PropTypes.string,
+  petId: PropTypes.string
+};
