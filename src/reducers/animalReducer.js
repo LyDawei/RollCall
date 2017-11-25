@@ -1,3 +1,16 @@
+import { ANIMAL_REQUESTED } from '../actions';
+import { ANIMAL_RETRIEVED } from '../actions';
+import { ANIMAL_STATUS_UPDATED } from '../actions';
+
+import request from 'request';
+
+const initialState = {
+  numCats: 0,
+  cats: {},
+  isRequesting: false,
+  hasRequestedData: false
+};
+
 // Reducer
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -21,6 +34,11 @@ export default (state = initialState, action) => {
       };
 
     default:
+      if (!state.numCats && !state.hasRequestedData) {
+        request.get('http://localhost:8000/api/v1/animals').on('response', (res)=>{
+          console.log(res);
+        })
+      }
       return state;
   }
 };

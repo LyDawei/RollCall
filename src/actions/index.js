@@ -1,16 +1,9 @@
-import { disconnect } from "cluster";
 import { setTimeout } from "timers";
 
 // Action Types
 export const ANIMAL_REQUESTED = 'animalControl/ANIMAL_REQUESTED';
 export const ANIMAL_RETRIEVED = 'animalControl/ANIMAL_RETRIEVED';
 export const ANIMAL_STATUS_UPDATED = 'animalControl/ANIMAL_STATUS_UPDATED';
-
-const initialState = {
-  numCats: 0,
-  cats: {},
-  isRequesting: false
-};
 
 // Action Creators
 export function animalRequest() {
@@ -32,10 +25,8 @@ export function animalRequestAsync() {
     });
 
     return setTimeout(() => {
-      dispatch({
-        type: ANIMAL_RETRIEVED
-      }),
-        3000
+      dispatch({type: ANIMAL_RETRIEVED})
+      3000
     });
   };
 }

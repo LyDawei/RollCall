@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Drawer from 'material-ui/Drawer';
@@ -102,10 +103,10 @@ class Home extends Component {
 const mapStateToProps = null;
 
 const mapDispatchToProps = dispatch => bindActionCreators(
-  {},
-  dispatch);
+  {changePage: () => push('/kennel-card')
+}, dispatch);
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Home);
