@@ -5,14 +5,13 @@ import { ANIMAL_STATUS_UPDATED } from '../actions';
 import request from 'request';
 
 const initialState = {
-  numCats: 0,
-  cats: {},
+  cats: [],
   isRequesting: false,
   hasRequestedData: false
 };
 
 // Reducer
-export default (state = initialState, action) => {
+export default function animalReducer(state = initialState, action) {
   switch (action.type) {
     case ANIMAL_REQUESTED:
       return {
@@ -34,10 +33,11 @@ export default (state = initialState, action) => {
       };
 
     default:
-      if (!state.numCats && !state.hasRequestedData) {
-        request.get('http://localhost:8000/api/v1/animals').on('response', (res)=>{
-          console.log(res);
-        })
+      if(!state.hasRequestedData && !state.cats.length){
+        request.get('http://localhost:8000/api/v1/animals', (err, res, body)=>{
+          state.cats = JSON.parse(body);
+        });
+        return state;        
       }
       return state;
   }

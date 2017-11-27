@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
@@ -31,7 +32,13 @@ class Home extends Component {
     };
   }
 
-  handleToggle = () => this.setState({ open: !this.state.open });
+  handleToggle = () => {
+    if (this.state.open) {
+
+    }
+    this.setState({ open: !this.state.open })
+
+  };
 
   handleClose = () => this.setState({ open: false });
 
@@ -63,9 +70,8 @@ class Home extends Component {
 
     //Hard coded values to showcase multiple animals
     var list = [];
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < this.props.cats.length; i++) {
       list.push(
-
         <Chip style={styles.chip} onClick={this.handleClose}>
           <Avatar src='/assets/curly.jpg' />Cat {i}
         </Chip>);
@@ -100,13 +106,26 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = null;
+Home.PropTypes = {
+  cats: PropTypes.required
+};
 
+
+//---------------Redux Stuff------------------
+
+const mapStateToProps = state => {
+  return {
+    cats: state.animalReducer.cats
+  };
+};
+
+//TODO: Make getAnimnalList call an action to retrieve list of animals from API
 const mapDispatchToProps = dispatch => bindActionCreators(
-  {changePage: () => push('/kennel-card')
-}, dispatch);
+  {
+    getAnimalList: () => push('/kennel-card')
+  }, dispatch);
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home);

@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleWare, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import rootReducer from './reducers/rootReducer.js';
+import rollCallApp from './reducers/rootReducer.js';
 
 export const history = createHistory();
 
@@ -27,7 +27,7 @@ const composedEnhancers = compose(
 );
 
 const store = createStore(
-  rootReducer,
+  rollCallApp,
   initialState,
   composedEnhancers
 );
