@@ -1,44 +1,81 @@
-import { ANIMAL_REQUESTED } from '../actions';
-import { ANIMAL_RETRIEVED } from '../actions';
-import { ANIMAL_STATUS_UPDATED } from '../actions';
-
-import request from 'request';
+import {
+  FETCH_HAS_ERRORED,
+  FETCH_IS_LOADING,
+  FETCH_DATA_SUCCESS,
+  FETCH_ANIMAL_SUCCESS
+} from '../actions/animal-actions.js';
 
 const initialState = {
   cats: [],
-  isRequesting: false,
-  hasRequestedData: false
+  currentCat: null,
+  isRequesting: false
 };
 
 // Reducer
 export default function animalReducer(state = initialState, action) {
   switch (action.type) {
-    case ANIMAL_REQUESTED:
+    case FETCH_IS_LOADING:
+      return state;
+
+    case FETCH_DATA_SUCCESS:
       return {
         ...state,
-        isRequesting: true
+        cats: action.payload
       };
 
-    case ANIMAL_RETRIEVED:
-      return {
-        ...state,
-        numCats: state.numCats + 1,
-        isRequesting: false
-      };
+    case FETCH_HAS_ERRORED:
+      return state;
 
-    case ANIMAL_STATUS_UPDATED:
+    case FETCH_ANIMAL_SUCCESS:
+      let {
+        pk,
+        name,
+        animal,
+        birth_date,
+        is_female,
+        joined,
+        personal_history,
+        preferences_cats,
+        preferences_dogs,
+        preferences_kids,
+        declawed,
+        spay_neuter,
+        health,
+        pet_id,
+        biography,
+      } = action.payload;
+
+      let cat = {
+        animalStory: biography,
+        animalInfo: {
+          dateJoined: joined,
+          gender: is_female ? 'Female' : 'Male',
+          breed: 'return BREED',
+          birthday: birth_date,
+          history: personal_history,
+          preferences: {
+            cats: preferences_cats,
+            dogs: preferences_dogs,
+            children: preferences_kids
+          },
+          declawed,
+          spayedOrNeutered: spay_neuter,
+          health,
+          petId: pet_id
+        },
+        polaroid: {
+          imageUrl: 'assets/curly.jpg',
+          imageText: 'Black cat with curly tail.',
+          imageTitle: name
+        }
+      }
+
       return {
         ...state,
-        isRequesting: false
+        currentCat: cat
       };
 
     default:
-      if(!state.hasRequestedData && !state.cats.length){
-        request.get('http://localhost:8000/api/v1/animals', (err, res, body)=>{
-          state.cats = JSON.parse(body);
-        });
-        return state;        
-      }
       return state;
   }
 };

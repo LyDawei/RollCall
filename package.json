@@ -5,6 +5,7 @@
   "main": "src/electron-starter.js",
   "homepage": "https://github.com/dly5891/RollCall#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "create-react-app": "^1.4.1",
     "foreman": "^2.0.0",
     "material-ui": "^0.19.4",
@@ -16,6 +17,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "request": "^2.83.0"
   },
