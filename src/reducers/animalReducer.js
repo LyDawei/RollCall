@@ -2,12 +2,14 @@ import {
   FETCH_HAS_ERRORED,
   FETCH_IS_LOADING,
   FETCH_DATA_SUCCESS,
-  FETCH_ANIMAL_SUCCESS
+  FETCH_ANIMAL_SUCCESS,
+  FETCH_ANIMAL_STATUS
 } from '../actions/animal-actions.js';
 
 const initialState = {
   cats: [],
   currentCat: null,
+  currentCatCheckedOut: false,
   isRequesting: false
 };
 
@@ -33,6 +35,7 @@ export default function animalReducer(state = initialState, action) {
         animal,
         birth_date,
         is_female,
+        breed,
         joined,
         personal_history,
         preferences_cats,
@@ -50,7 +53,7 @@ export default function animalReducer(state = initialState, action) {
         animalInfo: {
           dateJoined: joined,
           gender: is_female ? 'Female' : 'Male',
-          breed: 'return BREED',
+          breed,
           birthday: birth_date,
           history: personal_history,
           preferences: {
@@ -74,6 +77,12 @@ export default function animalReducer(state = initialState, action) {
         ...state,
         currentCat: cat
       };
+
+    case FETCH_ANIMAL_STATUS:
+      return {
+        ...state,
+        isCurrentCatCheckedOut: action.payload.checked_out
+      }
 
     default:
       return state;

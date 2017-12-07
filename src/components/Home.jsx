@@ -65,14 +65,12 @@ class Home extends Component {
   }
 
   renderKennelCard() {
-    let kennelCardInfo = this.props.currentAnimal;
 
     return <KennelCard
-      animalInfo={kennelCardInfo.animalInfo}
-      animalStory={kennelCardInfo.animalStory}
-      imageText={kennelCardInfo.polaroid.imageText}
-      imageTitle={kennelCardInfo.polaroid.imageTitle}
-      imageUrl={kennelCardInfo.polaroid.imageUrl}
+      animal={this.props.currentAnimal}
+      imageText={this.props.currentAnimal.polaroid.imageText}
+      imageTitle={this.props.currentAnimal.polaroid.imageTitle}
+      imageUrl={this.props.currentAnimal.polaroid.imageUrl}
     />;
   }
 

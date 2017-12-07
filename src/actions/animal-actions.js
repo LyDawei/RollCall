@@ -5,6 +5,7 @@ export const FETCH_HAS_ERRORED = 'FETCH_HAS_ERRORED';
 export const FETCH_IS_LOADING = 'FETCH_IS_LOADING';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_ANIMAL_SUCCESS = 'FETCH_ANIMAL_SUCCESS';
+export const FETCH_ANIMAL_STATUS = 'FETCH_ANIMAL_STATUS';
 
 export function fetchAnimalHasErrored(bool) {
   return {
@@ -34,6 +35,13 @@ export function fetchAnimalSuccess(data){
   }
 }
 
+export function fetchAnimalStatusSuccess(data){
+  return {
+    type: FETCH_ANIMAL_STATUS,
+    payload: data
+  };
+}
+
 export function fetchAnimalList() {
   return (dispatch) => {
     dispatch(fetchAnimalIsLoading(true));
@@ -46,7 +54,9 @@ export function fetchAnimalList() {
       .then((response)=>response.json())
       .then((items)=>dispatch(fetchAnimalDataSuccess(items)));
   };
-}export function fetchAnimal(pk){
+}
+
+export function fetchAnimal(pk){
   return (dispatch) => {
     fetch(`http://localhost:8000/api/v1/animals/${pk}`)
       .then((response)=>response.json())
@@ -54,3 +64,6 @@ export function fetchAnimalList() {
   }
 }
 
+export function fetchAnimalStatus(pk){
+
+}

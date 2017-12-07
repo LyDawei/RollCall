@@ -17,29 +17,30 @@ class KennelCard extends Component {
           polaroidTitle={this.props.imageTitle}
         />
         <AnimalStory
-          cardText={this.props.animalStory} />
+          cardText={this.props.animal.animalStory} />
         <AnimalInfo
-          dateJoined={this.props.animalInfo.dateJoined}
-          gender={this.props.animalInfo.gender}
-          breed={this.props.animalInfo.breed}
-          birthday={this.props.animalInfo.birthday}
-          history={this.props.animalInfo.history}
-          cats={this.props.animalInfo.preferences.cats}
-          dogs={this.props.animalInfo.preferences.dogs}
-          children={this.props.animalInfo.preferences.children}
-          declawed={this.props.animalInfo.declawed}
-          spayedOrNeutered={this.props.animalInfo.spayedOrNeutered}
-          health={this.props.animalInfo.health}
-          petId={this.props.animalInfo.petId}/>
-        <CheckOutDialog />
+          dateJoined={this.props.animal.animalInfo.dateJoined}
+          gender={this.props.animal.animalInfo.gender}
+          breed={this.props.animal.animalInfo.breed}
+          birthday={this.props.animal.animalInfo.birthday}
+          history={this.props.animal.animalInfo.history}
+          cats={this.props.animal.animalInfo.preferences.cats}
+          dogs={this.props.animal.animalInfo.preferences.dogs}
+          children={this.props.animal.animalInfo.preferences.children}
+          declawed={this.props.animal.animalInfo.declawed}
+          spayedOrNeutered={this.props.animal.animalInfo.spayedOrNeutered}
+          health={this.props.animal.animalInfo.health}
+          petId={this.props.animal.animalInfo.petId}/>
+        <CheckOutDialog 
+          petId={this.props.animal.animalInfo.petId}          
+        />
       </Card>
     );
   }
 }
 
 KennelCard.PropTypes = {
-  animalStory: PropTypes.string,
-  animalInfo: PropTypes.object,
+  animal: PropTypes.object,
   imageUrl: PropTypes.string,
   imageTitle: PropTypes.string,
   imageText: PropTypes.string

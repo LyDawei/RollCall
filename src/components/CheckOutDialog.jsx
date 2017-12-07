@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-
 import './CheckOutDialog.css';
 
-export default class CheckOutDialog extends Component {
+export class CheckOutDialog extends Component {
 
   constructor(props) {
     super(props);
@@ -76,7 +78,7 @@ export default class CheckOutDialog extends Component {
 
     return (
       <div className="checkout-button">
-        <RaisedButton primary={true} label='Check Out' onClick={this.handleOpenStep1} />
+        <RaisedButton primary={true} label='Check Out' onClick={this.handleOpenStep1} disabled={this.props.checkedOut}/>
         <Dialog
           title="Please enter a 4 digit pin."
           actions={step1}
@@ -115,3 +117,17 @@ export default class CheckOutDialog extends Component {
     );
   }
 }
+
+CheckOutDialog.PropTypes = {
+  petId: PropTypes.string
+};
+
+const mapStateToProps = state => {
+  return {
+    checkedOut: state.animalReducer.currentCatCheckedOut
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(CheckOutDialog);
