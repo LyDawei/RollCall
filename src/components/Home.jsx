@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchAnimalList, fetchAnimal } from '../actions/animal-actions.js';
+import { fetchAnimalList, fetchAnimal, fetchAnimalStatus } from '../actions/animal-actions.js';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Drawer from 'material-ui/Drawer';
@@ -42,6 +42,7 @@ class Home extends Component {
 
   handleClose(pk) {
     this.props.fetchAnimal(pk);
+    this.props.fetchAnimalStatus(pk);
     this.setState({ open: false });
   }
 
@@ -116,7 +117,8 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
   return {
     fetchAnimalList: () => dispatch(fetchAnimalList()),
-    fetchAnimal: (pk) => dispatch(fetchAnimal(pk))
+    fetchAnimal: (id) => dispatch(fetchAnimal(id)),
+    fetchAnimalStatus: (id)=>dispatch(fetchAnimalStatus(id))
   };
 }
 export default connect(

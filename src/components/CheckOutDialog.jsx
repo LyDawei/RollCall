@@ -15,6 +15,7 @@ export class CheckOutDialog extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      value: 1,
       step1: false,
       step2: false,
       pinNumber: '',
@@ -43,6 +44,10 @@ export class CheckOutDialog extends Component {
 
   handleCheckOut = (evt) => {
     this.setState({ step1: false, step2: true });
+  }
+
+  handleSelect = (evt, index, val) => {
+    this.setState({value:val});
   }
 
   render() {
@@ -104,13 +109,10 @@ export class CheckOutDialog extends Component {
         >
           <SelectField
             floatingLabelText="Reason:"
-            value={1}
+            value={this.state.value}
             onChange={this.handleSelect}>
-            <MenuItem value={1} primaryText="Never" />
-            <MenuItem value={2} primaryText="Every Night" />
-            <MenuItem value={3} primaryText="Weeknights" />
-            <MenuItem value={4} primaryText="Weekends" />
-            <MenuItem value={5} primaryText="Weekly" />
+            <MenuItem value="At a sleep over" primaryText="At a sleep over" />
+            <MenuItem value="Going to medical" primaryText="Going to medical" />
           </SelectField>
         </Dialog>
       </div>

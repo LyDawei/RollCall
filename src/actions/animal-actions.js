@@ -42,6 +42,8 @@ export function fetchAnimalStatusSuccess(data){
   };
 }
 
+//------- Thunks below ---------
+
 export function fetchAnimalList() {
   return (dispatch) => {
     dispatch(fetchAnimalIsLoading(true));
@@ -65,5 +67,9 @@ export function fetchAnimal(pk){
 }
 
 export function fetchAnimalStatus(pk){
-
+  return dispatch => {
+    fetch(`http://localhost:8000/api/v1/get-checked-out-animal/${pk}`)
+      .then((response)=>response.json())
+      .then(items=>dispatch(fetchAnimalStatusSuccess(items)))
+  }
 }
