@@ -5,9 +5,7 @@
   "main": "src/electron-starter.js",
   "homepage": "https://github.com/dly5891/RollCall#readme",
   "dependencies": {
-    "axios": "^0.17.1",
     "create-react-app": "^1.4.1",
-    "foreman": "^2.0.0",
     "material-ui": "^0.19.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
@@ -22,7 +20,6 @@
     "request": "^2.83.0"
   },
   "devDependencies": {
-    "electron": "^1.7.9",
     "react-scripts": "^1.0.14"
   },
   "scripts": {
@@ -30,8 +27,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "electron .",
-    "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "dev": "nf start"
   },
   "repository": {
