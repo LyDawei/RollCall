@@ -3,7 +3,8 @@ import {
   FETCH_IS_LOADING,
   FETCH_DATA_SUCCESS,
   FETCH_ANIMAL_SUCCESS,
-  FETCH_ANIMAL_STATUS
+  FETCH_ANIMAL_STATUS,
+  FETCH_CHECK_OUT_ANIMAL_SUCCESS
 } from '../actions/animal-actions.js';
 
 const initialState = {
@@ -82,8 +83,12 @@ export default function animalReducer(state = initialState, action) {
       return {
         ...state,
         isCurrentCatCheckedOut: action.payload.checked_out
-      }
-
+      };
+    case FETCH_CHECK_OUT_ANIMAL_SUCCESS:
+      return {
+        ...state,
+        isCurrentCatCheckedOut: true
+      };
     default:
       return state;
   }

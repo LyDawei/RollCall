@@ -6,6 +6,7 @@ export const FETCH_IS_LOADING = 'FETCH_IS_LOADING';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_ANIMAL_SUCCESS = 'FETCH_ANIMAL_SUCCESS';
 export const FETCH_ANIMAL_STATUS = 'FETCH_ANIMAL_STATUS';
+export const FETCH_CHECK_OUT_ANIMAL_SUCCESS = 'FETCH_CHECK_OUT_ANIMAL_SUCCESS';
 
 export function fetchAnimalHasErrored(bool) {
   return {
@@ -28,16 +29,23 @@ export function fetchAnimalDataSuccess(data) {
   };
 }
 
-export function fetchAnimalSuccess(data){
+export function fetchAnimalSuccess(data) {
   return {
     type: FETCH_ANIMAL_SUCCESS,
     payload: data
   }
 }
 
-export function fetchAnimalStatusSuccess(data){
+export function fetchAnimalStatusSuccess(data) {
   return {
     type: FETCH_ANIMAL_STATUS,
+    payload: data
+  };
+}
+
+export function fetchPostAnimalCheckIn(data) {
+  return {
+    type: FETCH_CHECK_OUT_ANIMAL_SUCCESS,
     payload: data
   };
 }
@@ -53,23 +61,39 @@ export function fetchAnimalList() {
         dispatch(fetchAnimalIsLoading(true));
         return response;
       })
-      .then((response)=>response.json())
-      .then((items)=>dispatch(fetchAnimalDataSuccess(items)));
+      .then((response) => response.json())
+      .then((items) => dispatch(fetchAnimalDataSuccess(items)));
   };
 }
 
-export function fetchAnimal(pk){
+export function fetchAnimal(pk) {
   return (dispatch) => {
     fetch(`http://localhost:8000/api/v1/animals/${pk}`)
-      .then((response)=>response.json())
-      .then((items=>dispatch(fetchAnimalSuccess(items))));
+      .then((response) => response.json())
+      .then((items => dispatch(fetchAnimalSuccess(items))));
   }
 }
 
-export function fetchAnimalStatus(pk){
+export function fetchAnimalStatus(pk) {
   return dispatch => {
     fetch(`http://localhost:8000/api/v1/get-checked-out-animal/${pk}`)
-      .then((response)=>response.json())
-      .then(items=>dispatch(fetchAnimalStatusSuccess(items)))
+      .then((response) => response.json())
+      .then(items => dispatch(fetchAnimalStatusSuccess(items)))
+  }
+}
+
+
+export function checkOutAnimal(animalPk, roomPk, note) {
+  return dispatch => {
+    fetch(`http://localhost:8000/api/v1/post-check-out-animal`, {
+      header:{'content-type':'application/json'},
+      method: 'post',
+      body: JSON.stringify({
+        id: animalPk,
+        room: roomPk,
+        note: note
+      })
+    }).then((response) => response.json())
+      .then(items => dispatch(fetchAnimalStatusSuccess(items)))
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -8,6 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import { checkOutAnimal } from '../actions/animal-actions.js';
 import './CheckOutDialog.css';
 
 export class CheckOutDialog extends Component {
@@ -19,7 +20,8 @@ export class CheckOutDialog extends Component {
       step1: false,
       step2: false,
       pinNumber: '',
-      submissionDisabled: true
+      submissionDisabled: true,
+      checkedOut: false
     };
   }
 
@@ -31,7 +33,12 @@ export class CheckOutDialog extends Component {
     this.setState({ step1: false });
   };
 
+  handleOpenStep2 = () => {
+    this.setState({ step2: true });
+  }
+
   handleCloseStep2 = () => {
+    this.handleCloseStep1();
     this.setState({ step2: false });
   };
 
@@ -43,11 +50,21 @@ export class CheckOutDialog extends Component {
   };
 
   handleCheckOut = (evt) => {
-    this.setState({ step1: false, step2: true });
+    this.handleCloseStep2();
+    this.setState({checkedOut: true});
+    this.handleCheckOutRequest();
+  }
+
+  handleCheckOutRequest(){
+    let {
+      petId,
+      roomId
+    } = this.props;
+    this.props.checkOutAnimal(petId, roomId, this.state.value);
   }
 
   handleSelect = (evt, index, val) => {
-    this.setState({value:val});
+    this.setState({ value: val });
   }
 
   render() {
@@ -59,10 +76,10 @@ export class CheckOutDialog extends Component {
         onClick={this.handleCloseStep1}
       />,
       <FlatButton
-        label="Submit"
+        label="Next"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleCheckOut}
+        onClick={this.handleOpenStep2}
         disabled={this.state.submissionDisabled}
       />,
     ];
@@ -83,7 +100,7 @@ export class CheckOutDialog extends Component {
 
     return (
       <div className="checkout-button">
-        <RaisedButton primary={true} label='Check Out' onClick={this.handleOpenStep1} disabled={this.props.checkedOut}/>
+        <RaisedButton primary={true} label='Check Out' onClick={this.handleOpenStep1} disabled={this.props.checkedOut || this.state.checkedOut} />
         <Dialog
           title="Please enter a 4 digit pin."
           actions={step1}
@@ -121,7 +138,8 @@ export class CheckOutDialog extends Component {
 }
 
 CheckOutDialog.PropTypes = {
-  petId: PropTypes.string
+  petId: PropTypes.string,
+  roomId: PropTypes.number,
 };
 
 const mapStateToProps = state => {
@@ -130,6 +148,13 @@ const mapStateToProps = state => {
   };
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    checkOutAnimal: (petId, roomId, note) => dispatch(checkOutAnimal(petId, roomId, note))
+  };
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(CheckOutDialog);
