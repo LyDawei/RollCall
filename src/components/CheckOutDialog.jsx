@@ -20,8 +20,7 @@ export class CheckOutDialog extends Component {
       step1: false,
       step2: false,
       pinNumber: '',
-      submissionDisabled: true,
-      checkedOut: false
+      submissionDisabled: true
     };
   }
 
@@ -57,10 +56,10 @@ export class CheckOutDialog extends Component {
 
   handleCheckOutRequest(){
     let {
-      petId,
+      petPk,
       roomId
     } = this.props;
-    this.props.checkOutAnimal(petId, roomId, this.state.value);
+    this.props.checkOutAnimal(petPk, roomId, this.state.value);
   }
 
   handleSelect = (evt, index, val) => {
@@ -138,7 +137,7 @@ export class CheckOutDialog extends Component {
 }
 
 CheckOutDialog.PropTypes = {
-  petId: PropTypes.string,
+  petPk: PropTypes.number,
   roomId: PropTypes.number,
 };
 
@@ -150,7 +149,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps (dispatch) {
   return {
-    checkOutAnimal: (petId, roomId, note) => dispatch(checkOutAnimal(petId, roomId, note))
+    checkOutAnimal: (petPk, roomId, note) => dispatch(checkOutAnimal(petPk, roomId, note))
   };
 }
 

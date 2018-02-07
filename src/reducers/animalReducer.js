@@ -65,7 +65,8 @@ export default function animalReducer(state = initialState, action) {
           declawed,
           spayedOrNeutered: spay_neuter,
           health,
-          petId: pet_id
+          petId: pet_id,
+          petPk: pk
         },
         polaroid: {
           imageUrl: 'assets/curly.jpg',
@@ -82,12 +83,12 @@ export default function animalReducer(state = initialState, action) {
     case FETCH_ANIMAL_STATUS:
       return {
         ...state,
-        isCurrentCatCheckedOut: action.payload.checked_out
+        currentCatCheckedOut: action.payload.checked_out
       };
     case FETCH_CHECK_OUT_ANIMAL_SUCCESS:
       return {
         ...state,
-        isCurrentCatCheckedOut: true
+        currentCatCheckedOut: true
       };
     default:
       return state;

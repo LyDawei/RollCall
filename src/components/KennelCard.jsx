@@ -32,7 +32,7 @@ class KennelCard extends Component {
           health={this.props.animal.animalInfo.health}
           petId={this.props.animal.animalInfo.petId}/>
         <CheckOutDialog 
-          petId={this.props.animal.animalInfo.petId}
+          petPk={this.props.animal.animalInfo.petPk}
           roomId={2}
         />
       </Card>

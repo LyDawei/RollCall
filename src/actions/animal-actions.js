@@ -86,8 +86,8 @@ export function fetchAnimalStatus(pk) {
 export function checkOutAnimal(animalPk, roomPk, note) {
   return dispatch => {
     fetch(`http://localhost:8000/api/v1/post-check-out-animal`, {
-      header:{'content-type':'application/json'},
-      method: 'post',
+      headers: new Headers({'Content-Type':'application/json'}),
+      method: 'POST',
       body: JSON.stringify({
         id: animalPk,
         room: roomPk,
