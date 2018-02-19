@@ -34,6 +34,8 @@ export default function animalReducer(state = initialState, action) {
         pk,
         name,
         animal,
+        image,
+        image_description,
         birth_date,
         is_female,
         breed,
@@ -69,8 +71,8 @@ export default function animalReducer(state = initialState, action) {
           petPk: pk
         },
         polaroid: {
-          imageUrl: 'assets/curly.jpg',
-          imageText: 'Black cat with curly tail.',
+          imageUrl: image,
+          imageText: image_description,
           imageTitle: name
         }
       }
