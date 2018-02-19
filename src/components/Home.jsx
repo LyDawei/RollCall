@@ -10,7 +10,7 @@ import Chip from 'material-ui/Chip';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
 import KennelCard from './KennelCard';
-
+import Counter from './Counter';
 
 const styles = {
   chip: {
@@ -66,7 +66,6 @@ class Home extends Component {
   }
 
   renderKennelCard() {
-
     return <KennelCard
       animal={this.props.currentAnimal}
       imageText={this.props.currentAnimal.polaroid.imageText}
@@ -82,7 +81,8 @@ class Home extends Component {
       <MuiThemeProvider>
         <AppBar
           title="Adult Cat Room"
-          onLeftIconButtonTouchTap={this.handleToggle}>
+          onLeftIconButtonTouchTap={this.handleToggle}
+          iconElementRight={<Counter count={this.props.cats.length} image='/assets/svgs/Whatcha-Lookin-At-Kitty.svg'/>}>
         </AppBar>
 
         <Drawer
